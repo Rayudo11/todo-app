@@ -36,6 +36,8 @@ class App extends React.Component {
     // console.log(this.state.todo);
   }
 
+  
+
   handleClick = (event) => {
     const todo = this.state.todo;
     console.log(todo);
@@ -48,6 +50,17 @@ class App extends React.Component {
     });
 
   }
+
+  // handleDelete = (index) => {
+  //   var deleteList= [this.deleteItem(inde)]
+    
+  //   this.deleteItem({
+  //      todoList = [...this.state.todoList],
+  //       todoList.splice(index, 1),
+  //      this.setState({todoList})
+  //   });
+  // }
+  
 
   
 
@@ -66,7 +79,9 @@ class App extends React.Component {
           value={this.state.todo}
           />
           <button 
-          onClick={this.handleClick}>submit
+          onClick={this.handleClick}>Submit
+          </button>
+          <button onClick={this.handleDelete}> Delete Item
           </button>
        </section>
        <ul>
