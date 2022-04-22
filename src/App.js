@@ -51,15 +51,14 @@ class App extends React.Component {
 
   }
 
-  // handleDelete = (index) => {
-  //   var deleteList= [this.deleteItem(inde)]
+  handleDelete = (id) => {
+    let removeArr = [...this.state.todoList];
+    console.log(id);
+    removeArr.splice(id, 1);
+    console.log(removeArr);
+    this.setState({todoList: [...removeArr]});
     
-  //   this.deleteItem({
-  //      todoList = [...this.state.todoList],
-  //       todoList.splice(index, 1),
-  //      this.setState({todoList})
-  //   });
-  // }
+  }
   
 
   
@@ -69,7 +68,7 @@ class App extends React.Component {
     return (
      <div className="App">
        <section>
-          <h1>Hello World</h1>
+          <h1>Game Plan fo Today</h1>
           <label 
           htmlFor="todos">TODOS:
           </label>
@@ -78,15 +77,19 @@ class App extends React.Component {
           onChange={this.handleChange}
           value={this.state.todo}
           />
-          <button 
-          onClick={this.handleClick}>Submit
-          </button>
-          <button onClick={this.handleDelete}> Delete Item
+          <button
+             onClick={this.handleClick}> Add
           </button>
        </section>
        <ul>
           {this.state.todoList.map(({id, todo}, i ) => {
-            return <li key={id}> {todo} </li>;
+            return <li key={id}> 
+            {todo} 
+            <button
+             onClick={() => {this.handleDelete(i)}}> Delete
+          </button>
+          </li>;
+           
           })}
        </ul>
      </div>
